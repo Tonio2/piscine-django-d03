@@ -9,11 +9,11 @@ fi
 
 # Création de l'environnement virtuel s'il n'existe pas
 if [ ! -d "django_venv" ]; then
-    python3 -m venv django_venv
+    python3 -m venv ~/django_venv
 fi
 
 # Activation de l'environnement virtuel
-source django_venv/bin/activate
+source ~/django_venv/bin/activate
 
 # Installation des dépendances si requirements.txt est présent
 if [ -f "requirements.txt" ]; then
