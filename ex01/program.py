@@ -1,7 +1,3 @@
-import sys
-
-sys.path.insert(0, "./local_lib")
-
 from path import Path
 
 # Create a directory and a file

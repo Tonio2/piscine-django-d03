@@ -12,9 +12,14 @@ echo "Installing path.py..."
 pip install --upgrade --target=./local_lib --log install.log git+https://github.com/jaraco/path.py.git
 
 # Check if path.py is installed correctly
-if [ -d "./local_lib/path" ]; then
+if [ $? -eq 0 ]; then
     echo "path.py installed successfully."
-    # Execute the Python program
+
+    LOCAL_LIB_PATH=$(pwd)/local_lib
+    # Check if LOCAL_LIB_PATH is already in PYTHONPATH
+    if [[ ":$PYTHONPATH:" != *":$LOCAL_LIB_PATH:"* ]]; then
+        export PYTHONPATH="$PYTHONPATH:$LOCAL_LIB_PATH"
+    fi
     python3 program.py
 else
     echo "Installation failed. Check install.log for details."
